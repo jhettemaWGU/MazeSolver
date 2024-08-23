@@ -26,6 +26,8 @@ public class Panel extends JPanel {
             {0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 2},
     };
     Maze maze = new Maze(mazeArray, tileSize);
+    MazePath mazePath = new MazePath(mazeArray, tileSize, this);
+    LinkedList<Position> path = mazePath.getPath();
 
     public Panel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -38,8 +40,7 @@ public class Panel extends JPanel {
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setTitle("Maze Solver");
-        Panel panel = new Panel();
-        window.add(panel);
+        window.add(this);
         window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
@@ -53,23 +54,27 @@ public class Panel extends JPanel {
         return mazeArray;
     }
 
-    public void drawSingleSquare(Position pos) {
+    /*public void drawSingleSquare(Position pos) {
         Graphics g = getGraphics();
         if (g != null) {
             g.setColor(Color.BLUE);
             g.fillRect(pos.x * tileSize, pos.y * tileSize, tileSize, tileSize);
         }
+    }*/
+
+    public void drawCompletedPath(LinkedList<Position> path) {
+        this.path = path;
+        repaint();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         maze.draw(g);
-        //drawPath(g);
+        drawPath(g);
     }
 
-    public void drawCompletedPath(LinkedList<Position> path) {
-        Graphics g = getGraphics();
+    public void drawPath(Graphics g) {
         if (g != null) {
             g.setColor(Color.BLUE);
             for (Position pos : path) {
