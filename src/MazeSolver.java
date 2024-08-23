@@ -1,23 +1,24 @@
-
-
+import java.awt.*;
 import java.util.LinkedList;
 
 public class MazeSolver {
 
-    static int[][] maze = {
-            {1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0},
-            {0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0},
-            {0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0},
-            {1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0},
-            {0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0},
-            {0, 1, 0, 1, 0, 1, 3, 0, 2, 1, 1}
-    };
-
-
-
     static LinkedList<Position> path = new LinkedList<Position>();
 
     public static void main(String[] args) {
+        Panel panel = new Panel();
+        Maze maze = new Maze(panel.getMazeArray(), panel.getTileSize());
+        Position start = maze.getStartPosition(panel.getMazeArray());
+        start.print();
+
+
+        panel.startPanel();
+
+
+
+
+
+/*
         Position p = createStartPosition();
         path.push(p);
 
@@ -25,7 +26,7 @@ public class MazeSolver {
             int y = path.peek().y;
             int x = path.peek().x;
             printMazeWithPath();
-            maze[y][x] = 0;
+            maze.getPosition[y][x] = 0;
 
             if(isValid(y+1, x)) {
                 //down
@@ -84,17 +85,6 @@ public class MazeSolver {
         }
     }
 
-    static Position createStartPosition() {
-        for (int i = 0; i < maze.length; i++) {
-            for (int j = 0; j < maze[i].length; j++) {
-                if (maze[i][j] == 3) {
-                    return new Position(i, j);
-                }
-            }
-        }
-        System.out.println("No Starting Position found");
-        return null;
-    }
 
     public static boolean isValid(int y, int x) {
         return y >= 0 &&
@@ -128,6 +118,6 @@ public class MazeSolver {
             }
             System.out.println();
         }
-        System.out.println();
+        System.out.println();*/
     }
 }

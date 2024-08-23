@@ -6,4 +6,8 @@ public class Position {
         this.x = x;
         this.y = y;
     }
+
+    public void print() {
+        System.out.println("Position: (" + x + ", " + y + ")");
+    }
 }
