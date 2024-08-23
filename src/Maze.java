@@ -32,12 +32,7 @@ public class Maze {
         return null;
     }
 
-    public boolean isValid(int[][] mazeArray, int y, int x){
-        return  y >= 0 &&
-                y < mazeArray.length &&
-                x >= 0 &&
-                x < mazeArray[0].length;
-    }
+
 
     public void draw( Graphics g) {
         for (int row = 0; row < mazeArray.length; row ++) {

@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.LinkedList;
 
 public class Panel extends JPanel {
 
@@ -52,9 +53,29 @@ public class Panel extends JPanel {
         return mazeArray;
     }
 
+    public void drawSingleSquare(Position pos) {
+        Graphics g = getGraphics();
+        if (g != null) {
+            g.setColor(Color.BLUE);
+            g.fillRect(pos.x * tileSize, pos.y * tileSize, tileSize, tileSize);
+        }
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         maze.draw(g);
+        //drawPath(g);
+    }
+
+    public void drawCompletedPath(LinkedList<Position> path) {
+        Graphics g = getGraphics();
+        if (g != null) {
+            g.setColor(Color.BLUE);
+            for (Position pos : path) {
+                g.fillRect(pos.x * tileSize, pos.y * tileSize, tileSize, tileSize);
+            }
+            g.dispose();
+        }
     }
 }
