@@ -28,15 +28,16 @@ public class MazePath {
 
     private boolean moveTo(int y, int x) {
         if (isValid(y, x)) {
+            Position curr = new Position(y, x);
             if (maze[y][x] == 2) {
                 System.out.println("Destination Reached!");
-                path.push(new Position(y, x));
+                path.push(curr);
+                panel.repaint();
                 return true;
             } else if (maze[y][x] == 1) {
                 System.out.println("Found a valid square to move to at: " + x + ", " + y);
-                Position curr = new Position(y, x);
                 path.push(curr);
-                //panel.drawSingleSquare(curr);
+                panel.repaint();
                 try {
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
@@ -55,12 +56,13 @@ public class MazePath {
             return false;
         }
         path.push(start);
+        panel.repaint();
 
         while (!path.isEmpty()) {
             Position current = path.peek();
             int y = current.y;
             int x = current.x;
-            maze[y][x] = 0;
+            maze[y][x] = 4;
 
             boolean moved = false;
 
@@ -84,6 +86,7 @@ public class MazePath {
             if (!moved) {
                 System.out.println("Go back.");
                 path.pop();
+                panel.repaint();
             }
 
             if (!path.isEmpty() && maze[path.peek().y][path.peek().x] == 2) {

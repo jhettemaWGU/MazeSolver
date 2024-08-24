@@ -44,6 +44,7 @@ public class Maze {
                     case 1 -> g.setColor(Color.WHITE); // path
                     case 2 -> g.setColor(Color.RED); // end
                     case 3 -> g.setColor(Color.GREEN); // start
+                    case 4 -> g.setColor(Color.BLUE); // path taken
                 }
 
                 g.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);

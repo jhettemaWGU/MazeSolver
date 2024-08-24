@@ -60,16 +60,17 @@ public class Panel extends JPanel {
             g.setColor(Color.BLUE);
             g.fillRect(pos.x * tileSize, pos.y * tileSize, tileSize, tileSize);
         }
-    }*/
+    }
 
     public void drawCompletedPath(LinkedList<Position> path) {
         this.path = path;
         repaint();
-    }
+    }*/
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.setColor(Color.BLUE);
         maze.draw(g);
         drawPath(g);
     }
@@ -78,9 +79,9 @@ public class Panel extends JPanel {
         if (g != null) {
             g.setColor(Color.BLUE);
             for (Position pos : path) {
+                g.setColor(Color.BLUE);
                 g.fillRect(pos.x * tileSize, pos.y * tileSize, tileSize, tileSize);
             }
-            g.dispose();
         }
     }
 }

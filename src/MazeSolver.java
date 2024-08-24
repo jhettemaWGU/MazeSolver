@@ -17,7 +17,7 @@ public class MazeSolver {
         }
         MazePath path = new MazePath(panel.getMazeArray(), tileSize, panel);
         path.findPath(start);
-        panel.drawCompletedPath(path.getPath());
+        //panel.drawCompletedPath(path.getPath());
         panel.repaint();
     }
 }
