@@ -32,14 +32,14 @@ public class MazePath {
             if (maze[y][x] == 2) {
                 System.out.println("Destination Reached!");
                 path.push(curr);
-                panel.repaint();
+                if (panel != null) panel.repaint();
                 return true;
             } else if (maze[y][x] == 1) {
                 System.out.println("Found a valid square to move to at: " + x + ", " + y);
                 path.push(curr);
-                panel.repaint();
+                if (panel != null) panel.repaint();
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(0);// changed from 200
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                     Thread.currentThread().interrupt();
@@ -56,7 +56,7 @@ public class MazePath {
             return false;
         }
         path.push(start);
-        panel.repaint();
+        if (panel != null) panel.repaint(); // to avoid a Null Pointer Exception when I do call this method to find a potential maze path.
 
         while (!path.isEmpty()) {
             Position current = path.peek();
@@ -66,6 +66,10 @@ public class MazePath {
 
             boolean moved = false;
 
+            if (moveTo(y-1, x)) {
+                System.out.println("Moved up");
+                moved = true;
+            }
             if (moveTo(y+1, x)) {
                 System.out.println("Moved down");
                 moved = true;
@@ -74,10 +78,7 @@ public class MazePath {
                 System.out.println("Moved left");
                 moved = true;
             }
-            if (moveTo(y-1, x)) {
-                System.out.println("Moved up");
-                moved = true;
-            }
+
             if (moveTo(y, x+1)) {
                 System.out.println("Moved right");
                 moved = true;
@@ -86,7 +87,7 @@ public class MazePath {
             if (!moved) {
                 System.out.println("Go back.");
                 path.pop();
-                panel.repaint();
+                if (panel != null) panel.repaint();
             }
 
             if (!path.isEmpty() && maze[path.peek().y][path.peek().x] == 2) {

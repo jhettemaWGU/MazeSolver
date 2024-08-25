@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 public class Panel extends JPanel {
 
+    MazeGenerator generator = new MazeGenerator(12, 16);
+
     final int originalTileSize = 16;
     final int scale = 3;
     final int tileSize = originalTileSize * scale;
@@ -11,7 +13,9 @@ public class Panel extends JPanel {
     final int maxScreenRow = 12;
     final int screenWidth = maxScreenCol * tileSize;
     final int screenHeight = maxScreenRow * tileSize;
-    final int[][] mazeArray = {
+    final int[][] mazeArray = generator.generateMaze();
+
+            /*{
             {1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1},
             {0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1},
             {0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1},
@@ -24,7 +28,7 @@ public class Panel extends JPanel {
             {0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0},
             {3, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1},
             {0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 2},
-    };
+    };*/
     Maze maze = new Maze(mazeArray, tileSize);
     MazePath mazePath = new MazePath(mazeArray, tileSize, this);
     LinkedList<Position> path = mazePath.getPath();
