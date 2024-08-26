@@ -5,11 +5,13 @@ public class Maze {
     private int tileSize;
     private Position position;
     private Position startPosition;
+    //private MazePanel mazePanel;
 
 
     public Maze(int[][] mazeArray, int tileSize){
         this.mazeArray = mazeArray;
         this.tileSize = tileSize;
+        //this.mazePanel = mazePanel;
     }
 
     public Position getPosition() {

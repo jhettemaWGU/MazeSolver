@@ -5,14 +5,14 @@ public class MazePath {
     private int[][] maze;
     private LinkedList<Position> path;
     private int tileSize;
-    private Panel panel;
+    private MazePanel mazePanel;
 
 
-    public MazePath(int[][] maze, int tileSize, Panel panel) {
+    public MazePath(int[][] maze, int tileSize, MazePanel mazePanel) {
         this.maze = maze;
         this.path = new LinkedList<>();
         this.tileSize = tileSize;
-        this.panel = panel;
+        this.mazePanel = mazePanel;
     }
 
     public LinkedList<Position> getPath() {
@@ -31,11 +31,11 @@ public class MazePath {
             Position curr = new Position(y, x);
             if (maze[y][x] == 2) {
                 path.push(curr);
-                if (panel != null) panel.repaint();
+                if (mazePanel != null) mazePanel.repaint();
                 return true;
             } else if (maze[y][x] == 1) {
                 path.push(curr);
-                if (panel != null) panel.repaint();
+                if (mazePanel != null) mazePanel.repaint();
                 try {
                     Thread.sleep(0);// changed from 200
                 } catch (InterruptedException e) {
@@ -54,7 +54,7 @@ public class MazePath {
             return false;
         }
         path.push(start);
-        if (panel != null) panel.repaint(); // to avoid a Null Pointer Exception when I do call this method to find a potential maze path.
+        if (mazePanel != null) mazePanel.repaint(); // to avoid a Null Pointer Exception when I do call this method to find a potential maze path.
 
         while (!path.isEmpty()) {
             Position current = path.peek();
@@ -80,7 +80,7 @@ public class MazePath {
 
             if (!moved) {
                 path.pop();
-                if (panel != null) panel.repaint();
+                if (mazePanel != null) mazePanel.repaint();
             }
 
             if (!path.isEmpty() && maze[path.peek().y][path.peek().x] == 2) {

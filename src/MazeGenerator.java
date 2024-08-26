@@ -48,7 +48,7 @@ public class MazeGenerator {
         return pathFinder.findPath(startPosition);
     }
 
-    private Position getStartPosition(int[][] maze) {
+    public Position getStartPosition(int[][] maze) {
         for (int i = 0; i < rows; i++) {
             if (maze[i][0] == 3) {
                 return new Position(i, 0);

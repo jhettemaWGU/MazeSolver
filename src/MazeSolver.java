@@ -1,9 +1,21 @@
-
+import javax.swing.*;
 
 public class MazeSolver {
 
     public static void main(String[] args) {
-        Panel panel = new Panel();
+        JFrame window = new JFrame();
+        window.setResizable(false);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setTitle("Maze Solver");
+
+        StartScreen startScreen = new StartScreen(window);
+        window.add(startScreen);
+        window.pack();
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+
+
+        /*Panel panel = new Panel();
         System.out.println("Starting a new panel...");
         int tileSize = panel.getTileSize();
         System.out.println("Tile size: " + tileSize);
@@ -20,6 +32,6 @@ public class MazeSolver {
         }
         MazePath path = new MazePath(panel.getMazeArray(), tileSize, panel);
         path.findPath(start);
-        panel.repaint();
+        panel.repaint();*/
     }
 }
