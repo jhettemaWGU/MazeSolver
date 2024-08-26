@@ -30,12 +30,10 @@ public class MazePath {
         if (isValid(y, x)) {
             Position curr = new Position(y, x);
             if (maze[y][x] == 2) {
-                System.out.println("Destination Reached!");
                 path.push(curr);
                 if (panel != null) panel.repaint();
                 return true;
             } else if (maze[y][x] == 1) {
-                System.out.println("Found a valid square to move to at: " + x + ", " + y);
                 path.push(curr);
                 if (panel != null) panel.repaint();
                 try {
@@ -67,25 +65,20 @@ public class MazePath {
             boolean moved = false;
 
             if (moveTo(y-1, x)) {
-                System.out.println("Moved up");
                 moved = true;
             }
             if (moveTo(y+1, x)) {
-                System.out.println("Moved down");
                 moved = true;
             }
             if (moveTo(y, x-1)) {
-                System.out.println("Moved left");
                 moved = true;
             }
 
             if (moveTo(y, x+1)) {
-                System.out.println("Moved right");
                 moved = true;
             }
 
             if (!moved) {
-                System.out.println("Go back.");
                 path.pop();
                 if (panel != null) panel.repaint();
             }

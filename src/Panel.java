@@ -58,19 +58,6 @@ public class Panel extends JPanel {
         return mazeArray;
     }
 
-    /*public void drawSingleSquare(Position pos) {
-        Graphics g = getGraphics();
-        if (g != null) {
-            g.setColor(Color.BLUE);
-            g.fillRect(pos.x * tileSize, pos.y * tileSize, tileSize, tileSize);
-        }
-    }
-
-    public void drawCompletedPath(LinkedList<Position> path) {
-        this.path = path;
-        repaint();
-    }*/
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class MazeGenerator {
@@ -18,7 +17,6 @@ public class MazeGenerator {
     }
 
     public int[][] generateMaze() {
-        System.out.println("Starting generateMaze...");
         do {
             maze = new int[rows][cols];
 
@@ -44,7 +42,6 @@ public class MazeGenerator {
 
     private boolean isValidMaze() {
         int[][] mazeCopy = copyMaze(maze);
-        System.out.println("Checking if the maze is valid...");
         MazePath pathFinder = new MazePath(mazeCopy, 1, null);
         Position startPosition = getStartPosition(mazeCopy);
         startPosition.print();
